@@ -57,8 +57,6 @@ class MovieShopTest2 {
 	    System.out.print("Add a nationality for the actor: ");
 	    String nationality = EasyScanner.nextString();
 	    
-	    System.out.print("Add a character name for the actor: ");
-	    String character = EasyScanner.nextString();
 	    
 	    testShop.addMovie(new Movie(title, yearOfRelease, runningTime, genre, plot));
 	    System.out.print(title + " was added successfully" + "\n");
@@ -66,7 +64,6 @@ class MovieShopTest2 {
 	    testShop.addActor(new Actor(name, dob, gender, nationality));
 	    System.out.print("The actor " + name + " was added successfully" + "\n");
 	    
-	    testShop.addCharacters(new Character(Actor, Movie, character));
 	    
 	    System.out.print("Enter movie title: ");
 	    String title2 = EasyScanner.nextString();
