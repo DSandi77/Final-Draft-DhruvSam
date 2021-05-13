@@ -1,5 +1,15 @@
 package ca_1;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+import com.thoughtworks.xstream.security.NoTypePermission;
+
+
 
 public class Driver {
     private MovieShop store;
@@ -29,16 +39,18 @@ public class Driver {
 	System.out.println("  7) Add an actor to a movie");// done
 	System.out.println("  8) Remove an actor from a movie");// done
 	System.out.println("  --------------------");
-	System.out.println(" 9) Search movie by name");
+	System.out.println("  9) Search movie by name");
+	System.out.println(" 10) Update Movie Plot");
 	System.out.println("  --------------------");
-	System.out.println(" 10) Save movies to xml");
-	System.out.println(" 11) Load movies from xml");
+	System.out.println(" 11) Save movies to xml");
+	System.out.println(" 12) Load movies from xml");
 	System.out.println("  --------------------");
 	System.out.println("  0) Exit");
 	System.out.println(" ");
 
-	num = EasyScannerInput.readNextInt("Please enter your menu option here >>>");
+	num = EasyScannerInput.readNextInt("Please enter your menu option here >>>  ");
 
+	System.out.println(" ");
 	return num;
 
     }
@@ -77,9 +89,26 @@ public class Driver {
 		searchMovieByName();
 		break;
 	    case 10:
-
+	    updateMoviePlot();
 		break;
 	    case 11:
+	    	try {
+				save();
+				System.out.print("Saved to XML");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		break;
+	    case 12:
+	    	try {
+				load();
+				System.out.print("XML Uploaded");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	
 		break;
 	    default:
 		System.out.println("Invalid option entered: " + option);
@@ -94,13 +123,15 @@ public class Driver {
 
     }
 
-    /**
+
+	/**
      * These are the methods for the movies.
      * 
      * @param store
      */
     public void addMovie() {
-	System.out.print("Enter movie title: ");
+    	System.out.println("----------Adding a Movie--------- " + "\n");
+    	System.out.print("Enter movie title: ");
 	    String title = EasyScanner.nextString();
 
 	    System.out.print("Enter year of release: ");
@@ -129,6 +160,7 @@ public class Driver {
 
 	@SuppressWarnings("static-access")
 	public void removeMovie() {
+		System.out.println("----------Removing a Movie--------- "+ "\n");
 	    System.out.println(this.store.displayListOfMoviesNames());
 	    if (store.movies.size() > 0) {
 		System.out.print("Enter the index of the movie to delete ==> ");
@@ -148,6 +180,7 @@ public class Driver {
     }
 
     public void addActorToTheSystem() {
+    	System.out.println("----------Adding an Actor to the System--------- "+ "\n");
 	System.out.print("Add a short name for the actor: ");
 	String name = EasyScanner.nextString();
 
@@ -164,7 +197,7 @@ public class Driver {
 
 	store.addActor(newActor);
 	
-	System.out.println(name + " has been added succesfully to the system");
+	System.out.println(name + " has been added succesfully to the system" + "\n");
 
 
 
@@ -172,6 +205,7 @@ public class Driver {
 
     @SuppressWarnings("static-access")
     public void removeActorFromTheSystem() {
+    	System.out.println("----------Removing an Actor from the System--------- "+ "\n");
 	System.out.println(store.displayListOfActorNames());
 	if (store.actors.size() > 0) {
 	    System.out.print("Enter the index of the character to delete ==> ");
@@ -188,7 +222,7 @@ public class Driver {
     }
 
     public void addActorToAMovie() {
-
+    	System.out.println("----------Adding Actor to Movie--------- "+ "\n");
 	System.out.print("Enter the name of the actor to add ==> ");
 	String name = EasyScanner.nextString();
 	Actor actor = store.searchActorName(name);
@@ -222,6 +256,7 @@ public class Driver {
 
 	    @SuppressWarnings("static-access")
 	    public void removeActorFromMovie() {
+	    	System.out.println("----------Remove Actor From Movie--------- "+ "\n");
 		System.out.print("Enter the name of the movie the actor you want to remove starred in:" + "\n");
 		String movieName = EasyScanner.nextString();
 		Movie movie = store.searchName(movieName);
@@ -239,7 +274,7 @@ public class Driver {
 	    }
 
 	    public void addCharacterToAMovie() {
-
+	    	System.out.println("----------Add Character to a Movie--------- "+ "\n");
 		System.out.print("Enter the name of the character to add ==> ");
 		String name = EasyScanner.nextString();
 		ActorWithMovie character = store.searchCharacterName(name);
@@ -264,6 +299,7 @@ public class Driver {
 
 	    @SuppressWarnings("static-access")
 	    public void removeCharacterFromMovie() {
+	    	System.out.println("----------Remove Character From Movie--------- "+ "\n");
 		System.out.print("Enter the name of the movie the character you want to remove was in:" + "\n");
 		String movieName = EasyScanner.nextString();
 		Movie movie = store.searchName(movieName);
@@ -280,56 +316,29 @@ public class Driver {
 		    }
 		}
 	    }
+	    
+	    @SuppressWarnings("static-access")
+		private void updateMoviePlot() {
+	    	System.out.println("----------Update Movie Plot--------- "+ "\n");
+	        System.out.println(store.displayListOfMoviesNames());
+	        if (store.getMovies().size() > 0) {
+	            System.out.print("Enter the index of the movie to update ==> ");
+	            int index = EasyScanner.nextInt();
+	            if (index >= 0 && index < store.getMovies().size()) {
+	                System.out.print("Enter the new movie plot:  ");
+	                String moviePlot = EasyScanner.nextString();
+	                Movie movie1 = (Movie)store.getMovies().get(index);
+	                movie1.setPlot(moviePlot);
+	                System.out.println("Movie plot update successfully");
+	            } else {
+	                System.out.println("There are no movies for this index number");
+	            }
+	        }
 
-
-//	@SuppressWarnings("static-access")
-//	public void addCharacter() {
-//	    Movie newMovie = null;
-//	    Actor newActor = null;
-//	    // we are looking to add the movie to Characters
-//	    System.out.println(this.store.displayListOfMoviesNames());
-//	    if (store.getMovies().size() >= 0) {
-//		System.out.print("Add the movie: ");
-//		String addMovie = EasyScanner.nextString();
-//		newMovie = this.store.searchName(addMovie);
-//		System.out.println("Movie added!");
-//	    } else {
-//		System.out.println("There are no movies in the system");
-//	    }
-//
-//	    // adding actor and movie to character
-//	    System.out.println(this.store.displayListOfActorNames());
-//	    if (store.getActor().size() >= 0) {
-//		System.out.print("Add the actor: ");
-//		String addActor = EasyScanner.nextString();
-//		newActor = this.store.searcActorhName(addActor);
-//		System.out.println("Actor added!");
-//	    } else {
-//		System.out.println("There are no actors in the system");
-//	    }
-//	    // add characters
-//	    System.out.print("Add the character name of the actor: ");
-//	    String character = EasyScanner.nextString();
-//
-//	    store.addCharacters(new ActorWithMovie(newActor, newMovie, character));
-//
-//	}
-//
-//	@SuppressWarnings("static-access")
-//	public void removeCharacter() {
-//	    System.out.println(this.store.displayListOfCharacterNames());
-//	    if (store.characters.size() >= 0) {
-//		System.out.print("Enter the index of the character to delete ==> ");
-//		int index = EasyScanner.nextInt();
-//		if (index >= 0 && index < store.getCharacters().size()) {
-//		    ActorWithMovie deleteCharacter = store.deleteCharacterByIndex(index);
-//		    System.out.println(deleteCharacter.getCharacter() + " was deleted succesfully");
-//
-//		}
-//	    }
-//	}
+	    }
 
 	public void searchMovieByName() {
+		System.out.println("----------Search Movie By name--------- "+ "\n");
 	    System.out.print("Please enter the movie name to search: ");
 	    String searchByName = EasyScanner.nextString();
 	    String thisMovie = store.searchByName(searchByName);
@@ -337,6 +346,7 @@ public class Driver {
 	}
 
 	public void displayMovieList() {
+		System.out.println("----------Movie List--------- "+ "\n");
 	    String movieList = store.displayListOfMoviesNames();
 	    System.out.print(movieList);
 	}
@@ -358,10 +368,11 @@ public class Driver {
 	    System.out.println("  7) Add a Movie Character in the system");// done
 	    System.out.println("  8) Remove a Movie Character from the system");// done
 	    System.out.println("  --------------------");
-	    System.out.println(" 9) Search movie by name");
-	    System.out.println("  --------------------");
-	    System.out.println(" 10) Save movies to xml");
-	    System.out.println(" 11) Load movies from xml");
+		System.out.println("  9) Search movie by name");
+		System.out.println(" 10) Update Movie Plot");
+		System.out.println("  --------------------");
+		System.out.println(" 11) Save movies to xml");
+		System.out.println(" 12) Load movies from xml");
 	    System.out.println("  --------------------");
 	    System.out.println("  0) Exit");
 	    System.out.println(" ");
@@ -390,5 +401,35 @@ public class Driver {
 	    }
 
     }
+	
+	/*
+	 * These are the XML methods
+	 */
 
+	 @SuppressWarnings("static-access")
+	public void save() throws Exception {
+		  XStream xstream = new XStream(new DomDriver());
+		  xstream.addPermission(NoTypePermission.NONE);
+		  ObjectOutputStream out = xstream.createObjectOutputStream
+		  (new FileWriter("MovieShop.xml"));
+		  out.writeObject(store.movies);
+		  out.writeObject(store.actors);
+		  out.writeObject(store.characters);
+		  out.close();
+		  }
+
+		  @SuppressWarnings("unchecked")
+		public static void load() throws Exception {
+		  XStream xstream = new XStream(new DomDriver());
+		  xstream.addPermission(NoTypePermission.NONE);
+		  xstream.allowTypesByRegExp(new String[] { ".*" });
+		  ObjectInputStream is = xstream.createObjectInputStream
+		  (new FileReader("MovieShop.xml"));
+		  MovieShop.movies = (ArrayList<Movie>) is.readObject();
+		  MovieShop.actors = (ArrayList<Actor>) is.readObject();
+		  MovieShop.characters = (ArrayList<ActorWithMovie>) is.readObject();
+		  is.close();
+		  }
+
+	
 }

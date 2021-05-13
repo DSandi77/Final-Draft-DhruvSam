@@ -1,5 +1,14 @@
 package ca_1;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+import com.thoughtworks.xstream.security.NoTypePermission;
+
 public class MovieShop {
 
   public static ArrayList < Movie > movies;
@@ -93,8 +102,7 @@ public class MovieShop {
       for (int i = 0; i < movies.size(); i++) {
         int movieCounter = i;
         if (movies.get(i).getTitle() != null)
-          listOfMovieNames += "Below is a list of movies in the system : " + "\n\n" + "Movie(" +
-          movieCounter + ") " + movies.get(i).getTitle() + "\n";
+          listOfMovieNames += "-Index No. = " + movieCounter + "\n" + " 	Movie name: " + " " + movies.get(i).getTitle() + "\n";
       }
       return listOfMovieNames;
     }
@@ -318,74 +326,11 @@ public class MovieShop {
     movies.set(j, smaller);
   }
 
+  
+ 
 
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//	//searcher method
-//public Actor searcActorhName(String name) {
-//    Actor actorToBeReturned = null;
-//    for (Actor actor : actors) {
-//	  if (actor.getName().toUpperCase().contains(name.toUpperCase())) {
-//		  actorToBeReturned = actor;
-//	  }
-//    }
-//    return actorToBeReturned;
-//    //return "We have found a movie matching your search of (" + name + ") , here are the details: "  + "\n " + movieToBeReturned.toString();
-//}
 
-  /*
-   * This method should look for the index of both movie and actor and print it
-   * out. Since we are matching an actor to a movie and the link is the character
-   * name we should look at the character Array and print out the Actor class and
-   * the Movie class names.
-   */
-//  public String displayCharactersAndActors() {
-//    if (characters.size() == 0) {
-//      return "No movies/actors are in the system";
-//    } else {
-//      String listOfActors = "";
-//
-//      for (int i = 0; i < characters.size(); i++) {
-//        if (characters.get(i).getMovie() != null)
-//          listOfActors += "The list of actors in the system are: " +
-//          characters.get(i).getMovie().toString() +
-//          characters.get(i).getActor().toString() + "\n";
-//      }
-//      return listOfActors;
-//    }
-//  }
+	
 
-//  public String displayMovieDetailsWithActors(Movie movie) {
-//    String movieDetails = "";
-//    String listOfActors = "";
-//
-//    if (movies.size() == 0) {
-//      return "No movies linked with Characters/Actors database";
-//
-//    } else {
-//      for (int i = 0; i < movies.size(); i++) {
-//        if (characters.get(i).getMovie() == movie) {
-//          movieDetails += "Movie()" + movies.get(i).getTitle() + movies.get(i).getYearOfRelease() +
-//            movies.get(i).getRunningTime() + movies.get(i).getGenre() +
-//            movies.get(i).getPlot() + "\n";
-//        }
-//      }
-//    }
-//
-//    if (characters.size() == 0) {
-//      listOfActors = "There are no actors/characters under that movie";
-//
-//    } else {
-//
-//      for (int i = 0; i < characters.size(); i++) {
-//        if (characters.get(i).getMovie() == movie) {
-//          listOfActors += "List of actors and their roles: " + "/n" +
-//            characters.get(i).getActor().toString() +
-//            characters.get(i).getCharacter().toString();
-//        }
-//      }
-//    }
-//
-//    return movieDetails + listOfActors;
-//  }
 
 }
