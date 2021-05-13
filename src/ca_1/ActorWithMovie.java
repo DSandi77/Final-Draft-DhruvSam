@@ -3,6 +3,7 @@ package ca_1;
     public class ActorWithMovie {
 
 
+
 	private Actor actor;
     	private String character;
 	private Movie movie;
@@ -40,12 +41,11 @@ package ca_1;
 	    this.movie = movie;
 	}
 
+
 	@Override
 	public String toString() {
-	    return "ActorWithMovie [actor=" + actor.getName() + ", character=" + character + ", movie="
-		    + movie.getTitle() + "]";
+	    return "ActorWithMovie [actor=" + actor.getName() + ", character=" + character + "]";
 	}
-
 
     }
 

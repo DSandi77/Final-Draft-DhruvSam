@@ -22,15 +22,7 @@ class MovieShopTest2 {
     static void tearDownAfterClass() throws Exception {
     }
 
-<<<<<<< Updated upstream
-	@BeforeEach
-	void setUp() throws Exception {
-	    testShop = new MovieShop();
-	    System.out.print("PLEASE ADD 2 MOVIES TO THE TEST ARRAY" + "\n\n\n\n");
 
-	    System.out.print("Enter movie title: ");
-	    String title = EasyScanner.nextString();
-=======
     @BeforeEach
     void setUp() throws Exception {
 	testShop = new MovieShop();
@@ -39,7 +31,6 @@ class MovieShopTest2 {
 	// add a movie
 	System.out.print("Enter movie title: ");
 	String title = EasyScanner.nextString();
->>>>>>> Stashed changes
 
 	System.out.print("Enter year of release: ");
 	int yearOfRelease = EasyScanner.nextInt();
@@ -47,7 +38,6 @@ class MovieShopTest2 {
 	System.out.print("Enter the running time: ");
 	Float runningTime = EasyScanner.nextFloat();
 
-<<<<<<< Updated upstream
 	    System.out.print("Enter the movies genre: ");
 	    String genre = EasyScanner.nextString();
 
@@ -93,13 +83,11 @@ class MovieShopTest2 {
 	    System.out.print(title2 + " was added successfully" + "\n\n\n\n");
 
 	    }
-=======
 	System.out.print("Enter the movies genre: ");
 	String genre = EasyScanner.nextString();
 
 	System.out.print("Add a short plot for the movie: ");
 	String plot = EasyScanner.nextString();
->>>>>>> Stashed changes
 
 	testShop.addMovie(new Movie(title, yearOfRelease, runningTime, genre, plot));
 	System.out.print(title + " was added successfully" + "\n");
@@ -161,22 +149,17 @@ class MovieShopTest2 {
 	System.out.println(testShop.displayListOfMoviesGenre());
     }
 
-<<<<<<< Updated upstream
 	@Test
 	void testDisplayMovieAndActors() {
 	    fail("Not yet implemented");
 	}
-=======
     @Test
     void testDisplayListOfMoviesYear() {
 	System.out.println(testShop.displayListOfMoviesYear());
->>>>>>> Stashed changes
 
     }
 
-<<<<<<< Updated upstream
 }
-=======
 //
 //	@Test
 //	void testDisplayMovieAndActors() {
@@ -184,4 +167,3 @@ class MovieShopTest2 {
 //	}
 
 }
->>>>>>> Stashed changes

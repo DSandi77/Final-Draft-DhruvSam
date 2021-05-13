@@ -42,6 +42,10 @@ public class Movie {
 	return characters;
     }
 
+    public String getCharactersNames() {
+	return characters.toString();
+    }
+
     public void setCharacters(ArrayList<ActorWithMovie> characters) {
 	this.characters = characters;
     }
@@ -125,10 +129,12 @@ public class Movie {
 	String list = "";
 	// iterating over array
 	for (int i = 0; i < actors.size(); i++) {
-	    list += characters.get(i).getActor().getName();
+	    list += characters.get(i).getCharacter();
 	}
 	return list;
     }
+
+
 
 	@Override
 	public String toString() {

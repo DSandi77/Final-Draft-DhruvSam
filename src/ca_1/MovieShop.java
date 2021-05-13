@@ -84,21 +84,21 @@ public class MovieShop {
   }
 
   // Display the list of movie names with return if none found
-  public String displayListOfMoviesNames() {
-    if (movies.size() == 0) {
-      return "No movies are in the system";
-    } else {
-      String listOfMovieNames = "";
-
-      for (int i = 0; i < movies.size(); i++) {
-        int movieCounter = i;
-        if (movies.get(i).getTitle() != null)
-          listOfMovieNames += "Below is a list of movies in the system : " + "\n\n" + "Movie(" +
-          movieCounter + ") " + movies.get(i).getTitle() + "\n";
-      }
-      return listOfMovieNames;
-    }
-  }
+//  public String displayListOfMoviesNames() {
+//    if (movies.size() == 0) {
+//      return "No movies are in the system";
+//    } else {
+//      String listOfMovieNames = "";
+//
+//      for (int i = 0; i < movies.size(); i++) {
+//        int movieCounter = i;
+//        if (movies.get(i).getTitle() != null)
+//          listOfMovieNames += "Below is a list of movies in the system : " + "\n\n" + "Movie(" +
+//          movieCounter + ") " + movies.get(i).getTitle() + "\n";
+//      }
+//      return listOfMovieNames;
+//    }
+//  }
 
   public String listOfMoviesNames() {
     String listOfMovieNames = "";
@@ -176,7 +176,15 @@ public class MovieShop {
     }
   }
 
-
+  public String searchByYear(int year) {
+      String list = "";
+      for (Movie movie : movies) {
+	  if (movie.getYearOfRelease() == year) {
+	      list += movie.getTitle();
+	  }
+      }
+      return list;
+  }
 
   // searcher method
   public String searchByName(String name) {

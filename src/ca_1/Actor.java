@@ -6,6 +6,7 @@ public class Actor {
     private String dob;
     private String gender;
     private String nationality;
+    private ArrayList<ActorWithMovie> characters;
 
 
     public Actor(String name, String dob, String gender, String nationality) {
@@ -14,7 +15,10 @@ public class Actor {
 	this.dob = dob;
 	this.gender = gender;
 	this.nationality = nationality;
+	characters = new ArrayList<ActorWithMovie>();
+
     }
+
 
     public String getName() {
 	return name;
@@ -46,6 +50,26 @@ public class Actor {
 
     public void setNationality(String nationality) {
 	this.nationality = nationality;
+    }
+
+    public ArrayList<ActorWithMovie> getCharacters() {
+	return characters;
+    }
+
+    public String getCharactersNames() {
+	return characters.toString();
+    }
+
+    public void setCharacters(ArrayList<ActorWithMovie> characters) {
+	this.characters = characters;
+    }
+
+    public void addCharacterToActor(ActorWithMovie character) {
+	characters.add(character);
+    }
+
+    public void removeCharacterFromActor(ActorWithMovie character) {
+	characters.remove(character);
     }
 
 
