@@ -7,24 +7,22 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 class MovieShopTest2 {
 
     private MovieShop testShop;
-	private Movie testMovie;
+    private Movie testMovie;
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
+    @BeforeAll
+    static void setUpBeforeClass() throws Exception {
 
+    }
 
-	}
+    @AfterAll
+    static void tearDownAfterClass() throws Exception {
+    }
 
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-	}
-
-
+<<<<<<< Updated upstream
 	@BeforeEach
 	void setUp() throws Exception {
 	    testShop = new MovieShop();
@@ -32,13 +30,24 @@ class MovieShopTest2 {
 
 	    System.out.print("Enter movie title: ");
 	    String title = EasyScanner.nextString();
+=======
+    @BeforeEach
+    void setUp() throws Exception {
+	testShop = new MovieShop();
+	System.out.print("PLEASE ADD 1 MOVIE TO THE TEST ARRAY" + "\n\n\n\n");
 
-	    System.out.print("Enter year of release: ");
-	    int yearOfRelease = EasyScanner.nextInt();
+	// add a movie
+	System.out.print("Enter movie title: ");
+	String title = EasyScanner.nextString();
+>>>>>>> Stashed changes
 
-	    System.out.print("Enter the running time: ");
-	    Float runningTime = EasyScanner.nextFloat();
+	System.out.print("Enter year of release: ");
+	int yearOfRelease = EasyScanner.nextInt();
 
+	System.out.print("Enter the running time: ");
+	Float runningTime = EasyScanner.nextFloat();
+
+<<<<<<< Updated upstream
 	    System.out.print("Enter the movies genre: ");
 	    String genre = EasyScanner.nextString();
 
@@ -84,71 +93,95 @@ class MovieShopTest2 {
 	    System.out.print(title2 + " was added successfully" + "\n\n\n\n");
 
 	    }
+=======
+	System.out.print("Enter the movies genre: ");
+	String genre = EasyScanner.nextString();
 
-	@AfterEach
-	void tearDown() throws Exception {
+	System.out.print("Add a short plot for the movie: ");
+	String plot = EasyScanner.nextString();
+>>>>>>> Stashed changes
+
+	testShop.addMovie(new Movie(title, yearOfRelease, runningTime, genre, plot));
+	System.out.print(title + " was added successfully" + "\n");
+
+	System.out.print("Add a name for the actor");
+
+    }
+
+    @AfterEach
+    void tearDown() throws Exception {
+    }
+
+    @Test // WORKING
+    void testAddMovie() {
+
+	for (int i = 0; i < 4; i++) {
+	    testShop.addMovie(testMovie);
 	}
+	assertEquals(testShop.numberOfMovies(), 4);
+    }
 
-
-	@Test // WORKING
-	void testAddMovie() {
-
-	    for (int i = 0; i < 4; i++) {
-		testShop.addMovie(testMovie);
-	    }
-	    assertEquals(testShop.numberOfMovies(), 4);
+    @Test // WORKING
+    void testDeleteMovie() {
+	for (int i = 0; i < 4; i++) {
+	    testShop.addMovie(testMovie);
 	}
+	testShop.deleteMovieByIndex(0);
+	assertEquals(testShop.numberOfMovies(), 3);
 
-	@Test // WORKING
-	void testDeleteMovie() {
-	    for (int i = 0; i < 4; i++) {
-		testShop.addMovie(testMovie);
-	    }
-	    testShop.deleteMovieByIndex(0);
-	    assertEquals(testShop.numberOfMovies(), 3);
+    }
 
-	}
+    @Test // WORKING
+    void testSearchByTitle() {
+	String firstName = EasyScannerInput.validNextLine("Please enter the movies title you are searching for:");
+	System.out.println(testShop.searchByName(firstName));
+    }
 
-	@Test // WORKING
-	void testSearchByTitle() {
-	    String firstName = EasyScannerInput.validNextLine("Please enter the movies title you are searching for:");
-	    System.out.println(testShop.searchByName(firstName));
-	}
+    @Test // WORKING
+    void testSortByTitle() {
+	testShop.sortByTitle();
+	System.out.println(testShop.displayListOfMoviesNames());
 
-	@Test // WORKING
-	void testSortByTitle() {
-	    testShop.sortByTitle();
-	    System.out.println(testShop.displayListOfMoviesNames());
+    }
 
-	}
+    @Test // WORKING
+    void testSortByYear() {
+	testShop.sortByTitle();
+	System.out.println(testShop.displayListOfMoviesNames());
 
-	@Test // WORKING
-	void testSortByYear() {
-	    testShop.sortByTitle();
-	    System.out.println(testShop.displayListOfMoviesNames());
+    }
 
-	}
+    @Test
+    void testDisplayListOfMoviesNames() {
+	System.out.println(testShop.displayListOfMoviesNames());
+    }
 
-	@Test
-	void testDisplayListOfMoviesNames() {
-	    System.out.println(testShop.displayListOfMoviesNames());
-	}
+    @Test
+    void testDisplayListOfMoviesGenre() {
+	System.out.println(testShop.displayListOfMoviesGenre());
+    }
 
-	@Test
-	void testDisplayListOfMoviesGenre() {
-	    System.out.println(testShop.displayListOfMoviesGenre());
-	}
-
-	@Test
-	void testDisplayListOfMoviesYear() {
-	    System.out.println(testShop.displayListOfMoviesYear());
-
-	}
-
+<<<<<<< Updated upstream
 	@Test
 	void testDisplayMovieAndActors() {
 	    fail("Not yet implemented");
 	}
+=======
+    @Test
+    void testDisplayListOfMoviesYear() {
+	System.out.println(testShop.displayListOfMoviesYear());
+>>>>>>> Stashed changes
 
+    }
+
+<<<<<<< Updated upstream
+}
+=======
+//
+//	@Test
+//	void testDisplayMovieAndActors() {
+//	    fail("Not yet implemented");
+//	}
 
 }
+>>>>>>> Stashed changes
