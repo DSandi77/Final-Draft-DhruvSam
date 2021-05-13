@@ -23,6 +23,7 @@ class MovieShopTest2 {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -32,6 +33,9 @@ class MovieShopTest2 {
 	    System.out.print("Enter movie title: ");
 	    String title = EasyScanner.nextString();
 
+=======
+
+>>>>>>> b5366807e5265ed3e53cf1fefb3bdce05b192384
 =======
 
 >>>>>>> b5366807e5265ed3e53cf1fefb3bdce05b192384
@@ -96,7 +100,10 @@ class MovieShopTest2 {
 
 	    }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> b5366807e5265ed3e53cf1fefb3bdce05b192384
 =======
 >>>>>>> b5366807e5265ed3e53cf1fefb3bdce05b192384
 	System.out.print("Enter the movies genre: ");
@@ -105,7 +112,10 @@ class MovieShopTest2 {
 	System.out.print("Add a short plot for the movie: ");
 	String plot = EasyScanner.nextString();
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> b5366807e5265ed3e53cf1fefb3bdce05b192384
 =======
 >>>>>>> b5366807e5265ed3e53cf1fefb3bdce05b192384
 
@@ -172,13 +182,17 @@ class MovieShopTest2 {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> b5366807e5265ed3e53cf1fefb3bdce05b192384
 =======
 >>>>>>> b5366807e5265ed3e53cf1fefb3bdce05b192384
 	@Test
 	void testDisplayMovieAndActors() {
 	    fail("Not yet implemented");
 	}
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     @Test
@@ -191,6 +205,15 @@ class MovieShopTest2 {
 
 }
 
+=======
+    @Test
+    void testDisplayListOfMoviesYear() {
+	System.out.println(testShop.displayListOfMoviesYear());
+
+    }
+
+}
+>>>>>>> b5366807e5265ed3e53cf1fefb3bdce05b192384
 =======
     @Test
     void testDisplayListOfMoviesYear() {
@@ -208,7 +231,10 @@ class MovieShopTest2 {
 
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 */
 
+=======
+>>>>>>> b5366807e5265ed3e53cf1fefb3bdce05b192384
 =======
 >>>>>>> b5366807e5265ed3e53cf1fefb3bdce05b192384
